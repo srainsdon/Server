@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1433280922 source:/home/srainsdon/Documents/Projects/Server/main.cpp
+	<iostream>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<netinet/in.h>
+	<stdint.h>
+
