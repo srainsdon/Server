@@ -20,10 +20,19 @@ void error(const char *msg)
 
 string bin(uint8_t n)
 {
+    int bob = n;
+    cout << bob << endl;
     string ans;
     for (unsigned i = 1 << 7; i > 0; i = i / 2)
         (n & i)? ans =+ "1" : ans =+ "0";
     return ans;
+}
+
+void bin2(uint8_t n)
+{
+    for (unsigned i = 1 << 7; i > 0; i = i / 2)
+        (n & i)? printf("1"): printf("0");
+    printf(" = %u = %c\n", n, n);
 }
 
 int main(int argc, char *argv[])
@@ -31,13 +40,12 @@ int main(int argc, char *argv[])
     int sockfd, newsockfd, portno;
     char       buffer[256];
     memset(buffer, 0, 256);
-    for(int i = 0; i < 4; i++) {
+    for(int i = 0; i < 64; i++) {
         uint8_t   *protoId = (uint8_t*)(buffer+i);
-        *protoId = 255;
+        *protoId = i;
     }
-    for(int i = 0; i < 8; i++) {
-            string num = bin(buffer[i]);
-            cout << num <<  buffer[i] << endl;
+    for(int i = 0; i < 64; i++) {
+        bin2(buffer[i]);
     }
     return 0;
 }
