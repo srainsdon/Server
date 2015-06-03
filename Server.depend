@@ -10,7 +10,7 @@
 	<netinet/in.h>
 	<stdint.h>
 
-1433294868 source:c:\users\srainsdon.home\documents\github\server\main.cpp
+1433313206 source:c:\users\srainsdon.home\documents\github\server\main.cpp
 	<iostream>
 	<stdio.h>
 	<stdlib.h>
@@ -18,4 +18,19 @@
 	<unistd.h>
 	<sys/types.h>
 	<stdint.h>
+	<cmath>
+	"message.h"
+
+1433306353 c:\users\srainsdon.home\documents\github\server\include\message.h
+
+1433312007 source:c:\users\srainsdon.home\documents\github\server\src\message.cpp
+	"message.h"
+	<iostream>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+	<sys/types.h>
+	<stdint.h>
+	<cmath>
 

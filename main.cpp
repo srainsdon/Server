@@ -1,51 +1,54 @@
-/* A simple server in the internet domain using TCP
-   The port number is passed as an argument */
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 #include <sys/types.h>
-//#include <sys/socket.h>
-//#include <netinet/in.h>
 #include <stdint.h>
-
+#include <cmath>
+#include "message.h"
 using namespace std;
 
-void error(const char *msg)
+void addStringToBuffer(void *source, string msgText, int msgT = 255)
 {
-    perror(msg);
-    exit(1);
+    int     msgLng = msgText.length();
+    int l = 0;
+    for(int i = 0; i < 1+msgLng; i++)
+    {
+        uint8_t   *msgTxt = (uint8_t*)(source+i);
+        switch ( i )
+        {
+
+        case 0 :
+            *msgTxt = msgT;
+            break;
+
+        case 1 :
+            *msgTxt = 2; // Start of text
+            break;
+
+        default :
+            char c = msgText[l];
+            *msgTxt = (uint8_t)c;
+            l++;
+        }
+    }
+    uint16_t   *msgEnd = (uint16_t*)(source+1+msgLng);
+    *msgEnd = 1027; // sets final bites to 3 and 4
 }
 
-string bin(uint8_t n)
+void sendMessage(void *source, string msgText, int msgT = 255)
 {
-    int bob = n;
-    cout << bob << endl;
-    string ans;
-    for (unsigned i = 1 << 7; i > 0; i = i / 2)
-        (n & i)? ans =+ "1" : ans =+ "0";
-    return ans;
-}
-
-void bin2(uint8_t n)
-{
-    for (unsigned i = 1 << 7; i > 0; i = i / 2)
-        (n & i)? printf("1"): printf("0");
-    printf(" = %u = %c\n", n, n);
+    addStringToBuffer(source, msgText, msgT);
 }
 
 int main(int argc, char *argv[])
 {
-    int sockfd, newsockfd, portno;
     char       buffer[256];
     memset(buffer, 0, 256);
-    for(int i = 0; i < 64; i++) {
-        uint8_t   *protoId = (uint8_t*)(buffer+i);
-        *protoId = i;
-    }
-    for(int i = 0; i < 64; i++) {
-        bin2(buffer[i]);
-    }
+    sendMessage(buffer, "Testing message sending functions", 215);
+    Message msg(buffer);
+    msg.print_bin(40*8);
+    msg.print_char();
     return 0;
 }
