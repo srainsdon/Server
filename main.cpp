@@ -9,6 +9,9 @@
 #include "message.h"
 using namespace std;
 
+#define BUFF_SZ 1024
+
+
 void sendMessage(void *source, string msgText, int msgT = 255)
 {
     int     msgLng = msgText.length();
