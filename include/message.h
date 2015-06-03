@@ -4,12 +4,12 @@
 
 class Message
 {
-    public:
-        Message(void *source);
-        void print_bin(unsigned hBit);
-        void print_char();
-    protected:
-    private:
+public:
+    Message(void *source);
+    void print_bin(unsigned hBit);
+    void print_char();
+protected:
+private:
     int     type = 0;
     void    *buffer;
 };
