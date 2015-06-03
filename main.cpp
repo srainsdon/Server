@@ -9,7 +9,7 @@
 #include "message.h"
 using namespace std;
 
-void addStringToBuffer(void *source, string msgText, int msgT = 255)
+void sendMessage(void *source, string msgText, int msgT = 255)
 {
     int     msgLng = msgText.length();
     int l = 0;
@@ -37,16 +37,11 @@ void addStringToBuffer(void *source, string msgText, int msgT = 255)
     *msgEnd = 1027; // sets final bites to 3 and 4
 }
 
-void sendMessage(void *source, string msgText, int msgT = 255)
-{
-    addStringToBuffer(source, msgText, msgT);
-}
-
 int main(int argc, char *argv[])
 {
     char       buffer[256];
     memset(buffer, 0, 256);
-    sendMessage(buffer, "Testing message sending functions", 215);
+    sendMessage(buffer, "Testing message sending functions", 170);
     Message msg(buffer);
     msg.print_bin(40*8);
     msg.print_char();
