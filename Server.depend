@@ -34,3 +34,28 @@
 	<stdint.h>
 	<cmath>
 
+1433524320 source:c:\users\srainsdon\documents\projects\server\main.cpp
+	<iostream>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+	<sys/types.h>
+	<stdint.h>
+	<cmath>
+	"message.h"
+
+1433521706 c:\users\srainsdon\documents\projects\server\include\message.h
+	<string>
+
+1433521597 source:c:\users\srainsdon\documents\projects\server\src\message.cpp
+	"message.h"
+	<iostream>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+	<sys/types.h>
+	<stdint.h>
+	<cmath>
+
